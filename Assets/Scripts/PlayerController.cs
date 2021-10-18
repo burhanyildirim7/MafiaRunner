@@ -1,0 +1,320 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Animations;
+using UnityEngine.UI;
+
+public class PlayerController : MonoBehaviour
+{
+
+    [SerializeField] private int _iyiToplanabilirDeger;
+
+    [SerializeField] private int _kötüToplanabilirDeger;
+
+    [SerializeField] private int _mafiaDuvarDeger;
+
+    [SerializeField] private int _kilibikDuvarDeger;
+
+    [SerializeField] private List<GameObject> _karakterler = new List<GameObject>();
+
+    [SerializeField] private KarakterPaketiMovement _karakterPaketiMovement;
+
+    [SerializeField] private Text _playerUstuLevelText;
+
+    [SerializeField] private GameObject _karakterPaketi;
+
+
+    private int _playerScore;
+
+    private int _elmasSayisi;
+
+    private Animator _karakterAnimator;
+
+    private int _karakterSeviyesi;
+
+    private GameObject _player;
+
+    private UIController _uiController;
+
+    private int _toplananElmasSayisi;
+
+
+
+    void Start()
+    {
+        LevelStart();
+
+        _uiController = GameObject.Find("UIController").GetComponent<UIController>();
+
+        
+    }
+
+
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "İyiToplanabilir")
+        {
+            int levelsinirsayisi = _playerScore + _iyiToplanabilirDeger;
+
+            if (levelsinirsayisi >= 99)
+            {
+                _playerScore = 99;
+            }
+            else
+            {
+                _playerScore += _iyiToplanabilirDeger;
+            }
+            
+            Destroy(other.gameObject);
+
+            KarakterAyarlama();
+
+            Debug.Log("Player Score = " + _playerScore);
+        }
+        else if (other.tag == "KötüToplanabilir")
+        {
+            if (_playerScore > _kötüToplanabilirDeger)
+            {
+                _playerScore -= _kötüToplanabilirDeger;
+                Destroy(other.gameObject);
+
+                KarakterAyarlama();
+
+                Debug.Log("Player Score = " + _playerScore);
+            }
+            else
+            {
+                _playerScore = 1;
+                Destroy(other.gameObject);
+
+                KarakterAyarlama();
+
+                Debug.Log("Player Score = " + _playerScore);
+            }
+
+        }
+        else if (other.tag == "MafiaDuvar")
+        {
+            int levelsinirsayisi = _playerScore + _mafiaDuvarDeger;
+
+            if (levelsinirsayisi >= 99)
+            {
+                _playerScore = 99;
+            }
+            else
+            {
+                _playerScore += _mafiaDuvarDeger;
+            }
+            KarakterAyarlama();
+
+            Debug.Log("Player Score = " + _playerScore);
+
+        }
+        else if (other.tag == "KılıbıkDuvar")
+        {
+            if (_playerScore > _kilibikDuvarDeger)
+            {
+                _playerScore -= _kilibikDuvarDeger;
+
+                KarakterAyarlama();
+
+                Debug.Log("Player Score = " + _playerScore);
+            }
+            else
+            {
+                _playerScore = 1;
+                Destroy(other.gameObject);
+
+                KarakterAyarlama();
+
+                Debug.Log("Player Score = " + _playerScore);
+            }
+
+        }
+        else if (other.tag == "Elmas")
+        {
+            _elmasSayisi += 1;
+            _toplananElmasSayisi += 1;
+            PlayerPrefs.SetInt("ElmasSayısı", _elmasSayisi);
+            Destroy(other.gameObject);
+
+            Debug.Log("Elmas Sayısı = " + _elmasSayisi);
+        }
+        else if (other.tag == "OyunSonuDuvar")
+        {
+            GameController._oyunuBeklet = true;
+            _karakterAnimator = GameObject.FindWithTag("Karakter").GetComponent<Animator>();
+
+            if (_karakterSeviyesi == 1)
+            {
+                _karakterAnimator.SetBool("Idle", false);
+                _karakterAnimator.SetBool("Walk", false);
+                _karakterAnimator.SetBool("Victory", true);
+                _uiController.LevelSonuElmasSayisi(_toplananElmasSayisi * _playerScore);
+                _uiController.LoseScreenPanelOpen();
+            }
+            else
+            {
+                _karakterAnimator.SetBool("Victory", true);
+                _uiController.LevelSonuElmasSayisi(_toplananElmasSayisi * _playerScore);
+                _uiController.WinScreenPanelOpen();
+            }
+           
+        }
+        else
+        {
+
+        }
+    }
+
+
+    public void Karakter1Walk()
+    {
+        _karakterAnimator.SetBool("Idle", false);
+        _karakterAnimator.SetBool("Walk", true);
+    }
+
+
+    private void KarakterAyarlama()
+    {
+        if (_playerScore < 15)
+        {
+            _karakterSeviyesi = 1;
+            _playerUstuLevelText.text = "Lv. " + _playerScore;
+            _karakterler[0].SetActive(true);
+            _karakterler[1].SetActive(false);
+            _karakterler[2].SetActive(false);
+            _karakterler[3].SetActive(false);
+            _karakterler[4].SetActive(false);
+            _karakterler[5].SetActive(false);
+        }
+        else if (_playerScore >= 15 && _playerScore < 30)
+        {
+            if (_karakterSeviyesi != 2)
+            {
+                _karakterPaketiMovement.Bekle();
+                _karakterSeviyesi = 2;
+            }
+            else
+            {
+
+            }
+
+            _playerUstuLevelText.text = "Lv. " + _playerScore;
+            _karakterler[0].SetActive(false);
+            _karakterler[1].SetActive(true);
+            _karakterler[2].SetActive(false);
+            _karakterler[3].SetActive(false);
+            _karakterler[4].SetActive(false);
+            _karakterler[5].SetActive(false);
+        }
+        else if (_playerScore >= 30 && _playerScore < 50)
+        {
+            if (_karakterSeviyesi != 3)
+            {
+                _karakterPaketiMovement.Bekle();
+                _karakterSeviyesi = 3;
+            }
+            else
+            {
+
+            }
+
+            _playerUstuLevelText.text = "Lv. " + _playerScore;
+            _karakterler[0].SetActive(false);
+            _karakterler[1].SetActive(false);
+            _karakterler[2].SetActive(true);
+            _karakterler[3].SetActive(false);
+            _karakterler[4].SetActive(false);
+            _karakterler[5].SetActive(false);
+        }
+        else if (_playerScore >= 50 && _playerScore < 70)
+        {
+            if (_karakterSeviyesi != 4)
+            {
+                _karakterPaketiMovement.Bekle();
+                _karakterSeviyesi = 4;
+            }
+            else
+            {
+
+            }
+
+            _playerUstuLevelText.text = "Lv. " + _playerScore;
+            _karakterler[0].SetActive(false);
+            _karakterler[1].SetActive(false);
+            _karakterler[2].SetActive(false);
+            _karakterler[3].SetActive(true);
+            _karakterler[4].SetActive(false);
+            _karakterler[5].SetActive(false);
+        }
+        else if (_playerScore >= 70 && _playerScore < 85)
+        {
+            if (_karakterSeviyesi != 5)
+            {
+                _karakterPaketiMovement.Bekle();
+                _karakterSeviyesi = 5;
+            }
+            else
+            {
+
+            }
+
+            _playerUstuLevelText.text = "Lv. " + _playerScore;
+            _karakterler[0].SetActive(false);
+            _karakterler[1].SetActive(false);
+            _karakterler[2].SetActive(false);
+            _karakterler[3].SetActive(false);
+            _karakterler[4].SetActive(true);
+            _karakterler[5].SetActive(false);
+
+        }
+        else if (_playerScore >= 85)
+        {
+            if (_karakterSeviyesi != 6)
+            {
+                _karakterPaketiMovement.Bekle();
+                _karakterSeviyesi = 6;
+            }
+            else
+            {
+
+            }
+
+            _playerUstuLevelText.text = "Lv. " + _playerScore;
+            _karakterler[0].SetActive(false);
+            _karakterler[1].SetActive(false);
+            _karakterler[2].SetActive(false);
+            _karakterler[3].SetActive(false);
+            _karakterler[4].SetActive(false);
+            _karakterler[5].SetActive(true);
+
+        }
+    }
+
+    public void LevelStart()
+    {
+        _playerScore = 1;
+        _toplananElmasSayisi = 1;
+        _elmasSayisi = PlayerPrefs.GetInt("ElmasSayısı");
+        _karakterSeviyesi = 1;
+        _playerUstuLevelText.text = "Lv. " + _playerScore;
+        _karakterler[0].SetActive(true);
+        _karakterler[1].SetActive(false);
+        _karakterler[2].SetActive(false);
+        _karakterler[3].SetActive(false);
+        _karakterler[4].SetActive(false);
+        _karakterler[5].SetActive(false);
+        _karakterAnimator = GameObject.FindWithTag("Karakter").GetComponent<Animator>();
+        _karakterAnimator.SetBool("Victory", false);
+        _karakterAnimator.SetBool("Idle", true);
+        _karakterPaketi.transform.position = new Vector3(0, 0, 0);
+        _player = GameObject.FindWithTag("Player");
+        _player.transform.localPosition = new Vector3(0, 1, 0);
+    }
+    
+
+
+}

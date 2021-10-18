@@ -1,0 +1,221 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7116575041326732161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6050982843212431967}
+  m_Layer: 0
+  m_Name: UzunYolParcasi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6050982843212431967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7116575041326732161}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7243269232611292709}
+  - {fileID: 2742229483751604398}
+  - {fileID: 8148391644754914645}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2501387002741591373
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6050982843212431967}
+    m_Modifications:
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127246225614892879, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_Name
+      value: YolParcasi (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+--- !u!4 &2742229483751604398 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+  m_PrefabInstance: {fileID: 2501387002741591373}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6934892428459572166
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6050982843212431967}
+    m_Modifications:
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127246225614892879, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_Name
+      value: YolParcasi
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+--- !u!4 &7243269232611292709 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+  m_PrefabInstance: {fileID: 6934892428459572166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8479163267565985974
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6050982843212431967}
+    m_Modifications:
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5127246225614892879, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+      propertyPath: m_Name
+      value: YolParcasi (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+--- !u!4 &8148391644754914645 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 340282452216843747, guid: f50a27f45bcd6494193abfa074f07a3f, type: 3}
+  m_PrefabInstance: {fileID: 8479163267565985974}
+  m_PrefabAsset: {fileID: 0}
