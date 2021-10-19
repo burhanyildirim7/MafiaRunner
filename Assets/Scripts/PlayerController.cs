@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Text _playerUstuLevelText;
 
     [SerializeField] private GameObject _karakterPaketi;
+    [SerializeField] Animator karakter1anim;
 
 
     private int _playerScore;
@@ -172,8 +173,8 @@ public class PlayerController : MonoBehaviour
 
     public void Karakter1Walk()
     {
-        _karakterAnimator.SetBool("Idle", false);
-        _karakterAnimator.SetBool("Walk", true);
+        karakter1anim.SetBool("Idle", false);
+        karakter1anim.SetBool("Walk", true);
     }
 
 
