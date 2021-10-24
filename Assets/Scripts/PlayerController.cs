@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Text _artiBirText;
 
+    [SerializeField] private Animator _bossArkasiBirinciKarakter;
+    [SerializeField] private Animator _bossArkasiIkinciKarakter;
+
 
     private int _playerScore;
 
@@ -51,6 +54,8 @@ public class PlayerController : MonoBehaviour
 
         _uiController = GameObject.Find("UIController").GetComponent<UIController>();
 
+        _playerUstuLevelText.color = Color.red;
+
         _artiBirObje.SetActive(false);
     }
 
@@ -64,6 +69,7 @@ public class PlayerController : MonoBehaviour
             int levelsinirsayisi = _playerScore + _iyiToplanabilirDeger;
 
             _artiBirText.text = "+1";
+            _artiBirText.color = Color.green;
             _artiBirObje.SetActive(true);
             Invoke("ArtiBirTextKapat", 0.5f);
 
@@ -87,6 +93,7 @@ public class PlayerController : MonoBehaviour
         else if (other.tag == "KötüToplanabilir")
         {
             _artiBirText.text = "-1";
+            _artiBirText.color = Color.red;
             _artiBirObje.SetActive(true);
             Invoke("ArtiBirTextKapat", 0.5f);
 
@@ -121,6 +128,7 @@ public class PlayerController : MonoBehaviour
             int levelsinirsayisi = _playerScore + _mafiaDuvarDeger;
 
             _artiBirText.text = "+10";
+            _artiBirText.color = Color.green;
             _artiBirObje.SetActive(true);
             Invoke("ArtiBirTextKapat", 0.5f);
 
@@ -140,6 +148,7 @@ public class PlayerController : MonoBehaviour
         else if (other.tag == "KılıbıkDuvar")
         {
             _artiBirText.text = "-10";
+            _artiBirText.color = Color.red;
             _artiBirObje.SetActive(true);
             Invoke("ArtiBirTextKapat", 0.5f);
 
@@ -221,6 +230,17 @@ public class PlayerController : MonoBehaviour
             {
                 //_karakterAnimator.SetBool("Walk", false);
                 _karakterAnimator.SetBool("Victory", true);
+
+                if (_karakterSeviyesi == 6)
+                {
+                    _bossArkasiBirinciKarakter.SetBool("Victory", true);
+                    _bossArkasiIkinciKarakter.SetBool("Victory", true);
+                }
+                else
+                {
+
+                }
+
                 _uiController.LevelSonuElmasSayisi(_toplananElmasSayisi * _playerScore);
                 Invoke("WinScreenAc", 2.5f);
                 Debug.Log("Tamamlandı");
@@ -260,6 +280,7 @@ public class PlayerController : MonoBehaviour
         if (_playerScore < 15)
         {
             _karakterSeviyesi = 1;
+            _playerUstuLevelText.color = Color.red;
             _playerUstuLevelText.text = "Lv. " + _playerScore;
             _karakterler[0].SetActive(true);
             _karakterler[1].SetActive(false);
@@ -281,6 +302,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
+            _playerUstuLevelText.color = Color.magenta;
             _playerUstuLevelText.text = "Lv. " + _playerScore;
             _karakterler[0].SetActive(false);
             _karakterler[1].SetActive(true);
@@ -301,6 +323,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
+            _playerUstuLevelText.color = Color.yellow;
             _playerUstuLevelText.text = "Lv. " + _playerScore;
             _karakterler[0].SetActive(false);
             _karakterler[1].SetActive(false);
@@ -321,6 +344,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
+            _playerUstuLevelText.color = Color.yellow;
             _playerUstuLevelText.text = "Lv. " + _playerScore;
             _karakterler[0].SetActive(false);
             _karakterler[1].SetActive(false);
@@ -341,6 +365,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
+            _playerUstuLevelText.color = Color.cyan;
             _playerUstuLevelText.text = "Lv. " + _playerScore;
             _karakterler[0].SetActive(false);
             _karakterler[1].SetActive(false);
@@ -362,6 +387,7 @@ public class PlayerController : MonoBehaviour
 
             }
 
+            _playerUstuLevelText.color = Color.green;
             _playerUstuLevelText.text = "Lv. " + _playerScore;
             _karakterler[0].SetActive(false);
             _karakterler[1].SetActive(false);
@@ -379,6 +405,7 @@ public class PlayerController : MonoBehaviour
         _toplananElmasSayisi = 1;
         _elmasSayisi = PlayerPrefs.GetInt("ElmasSayısı");
         _karakterSeviyesi = 1;
+        _playerUstuLevelText.color = Color.red;
         _playerUstuLevelText.text = "Lv. " + _playerScore;
         _karakterler[0].SetActive(true);
         _karakterler[1].SetActive(false);
