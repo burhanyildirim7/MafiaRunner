@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 9004772617693365593}
   m_Layer: 0
   m_Name: loyunSonuAdam4
-  m_TagString: Karakter
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

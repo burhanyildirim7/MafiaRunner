@@ -22,7 +22,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Text _playerUstuLevelText;
 
     [SerializeField] private GameObject _karakterPaketi;
-    [SerializeField] Animator karakter1anim;
+    //[SerializeField] Animator karakter1anim;
+
+    [SerializeField] private GameObject _artiBirObje;
+
+    [SerializeField] private Text _artiBirText;
 
 
     private int _playerScore;
@@ -47,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
         _uiController = GameObject.Find("UIController").GetComponent<UIController>();
 
-        
+        _artiBirObje.SetActive(false);
     }
 
 
@@ -58,6 +62,12 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "İyiToplanabilir")
         {
             int levelsinirsayisi = _playerScore + _iyiToplanabilirDeger;
+
+            _artiBirText.text = "+1";
+            _artiBirObje.SetActive(true);
+            Invoke("ArtiBirTextKapat", 0.5f);
+
+
 
             if (levelsinirsayisi >= 99)
             {
@@ -76,6 +86,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.tag == "KötüToplanabilir")
         {
+            _artiBirText.text = "-1";
+            _artiBirObje.SetActive(true);
+            Invoke("ArtiBirTextKapat", 0.5f);
+
             if (_playerScore > _kötüToplanabilirDeger)
             {
                 _playerScore -= _kötüToplanabilirDeger;
@@ -90,7 +104,13 @@ public class PlayerController : MonoBehaviour
                 _playerScore = 1;
                 Destroy(other.gameObject);
 
-                KarakterAyarlama();
+                KarakterPaketiMovement._karakteriDurdur = true;
+
+                _karakterAnimator.SetBool("Victory", true);
+                _uiController.LevelSonuElmasSayisi(_toplananElmasSayisi * _playerScore);
+                Invoke("WinScreenAc", 2.5f);
+
+                //KarakterAyarlama();
 
                 Debug.Log("Player Score = " + _playerScore);
             }
@@ -99,6 +119,10 @@ public class PlayerController : MonoBehaviour
         else if (other.tag == "MafiaDuvar")
         {
             int levelsinirsayisi = _playerScore + _mafiaDuvarDeger;
+
+            _artiBirText.text = "+10";
+            _artiBirObje.SetActive(true);
+            Invoke("ArtiBirTextKapat", 0.5f);
 
             if (levelsinirsayisi >= 99)
             {
@@ -115,6 +139,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.tag == "KılıbıkDuvar")
         {
+            _artiBirText.text = "-10";
+            _artiBirObje.SetActive(true);
+            Invoke("ArtiBirTextKapat", 0.5f);
+
             if (_playerScore > _kilibikDuvarDeger)
             {
                 _playerScore -= _kilibikDuvarDeger;
@@ -128,11 +156,22 @@ public class PlayerController : MonoBehaviour
                 _playerScore = 1;
                 Destroy(other.gameObject);
 
-                KarakterAyarlama();
+                GameController._oyunuBeklet = true;
+                KarakterPaketiMovement._karakteriDurdur = true;
+
+                _karakterAnimator.SetBool("Victory", true);
+                _uiController.LevelSonuElmasSayisi(_toplananElmasSayisi * _playerScore);
+                Invoke("WinScreenAc", 2.5f);
+
+               // KarakterAyarlama();
 
                 Debug.Log("Player Score = " + _playerScore);
             }
 
+        }
+        else if (other.tag == "DuvarPaketi")
+        {
+            Destroy(other.gameObject);
         }
         else if (other.tag == "Elmas")
         {
@@ -146,7 +185,29 @@ public class PlayerController : MonoBehaviour
         else if (other.tag == "OyunSonuDuvar")
         {
             GameController._oyunuBeklet = true;
+
             _karakterAnimator = GameObject.FindWithTag("Karakter").GetComponent<Animator>();
+            transform.localPosition = new Vector3(0, 1, 0);
+
+            OyunSonuToplulukControl oyunSonuToplulukControl = GameObject.FindGameObjectWithTag("OyunSonuTopluluk").GetComponent<OyunSonuToplulukControl>();
+
+            if (_karakterSeviyesi == 1)
+            {
+                oyunSonuToplulukControl.UzulmeAnimasyonuBaslat();
+            }
+            else
+            {
+                oyunSonuToplulukControl.SevninmeAnimasyonuBaslat();
+            }
+            
+            Debug.Log(_karakterAnimator);
+            
+
+        }
+        else if (other.tag == "SevinmeNoktasi")
+        {
+
+            KarakterPaketiMovement._karakteriDurdur = true;
 
             if (_karakterSeviyesi == 1)
             {
@@ -154,15 +215,16 @@ public class PlayerController : MonoBehaviour
                 _karakterAnimator.SetBool("Walk", false);
                 _karakterAnimator.SetBool("Victory", true);
                 _uiController.LevelSonuElmasSayisi(_toplananElmasSayisi * _playerScore);
-                _uiController.LoseScreenPanelOpen();
+                Invoke("LoseScreenAc", 2.5f);
             }
             else
             {
+                //_karakterAnimator.SetBool("Walk", false);
                 _karakterAnimator.SetBool("Victory", true);
                 _uiController.LevelSonuElmasSayisi(_toplananElmasSayisi * _playerScore);
-                _uiController.WinScreenPanelOpen();
+                Invoke("WinScreenAc", 2.5f);
+                Debug.Log("Tamamlandı");
             }
-           
         }
         else
         {
@@ -170,11 +232,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void WinScreenAc()
+    {
+        _uiController.WinScreenPanelOpen();
+    }
+
+    private void LoseScreenAc()
+    {
+        _uiController.LoseScreenPanelOpen();
+    }
 
     public void Karakter1Walk()
     {
-        karakter1anim.SetBool("Idle", false);
-        karakter1anim.SetBool("Walk", true);
+        _karakterAnimator = GameObject.FindWithTag("Karakter").GetComponent<Animator>();
+        _karakterAnimator.SetBool("Idle", false);
+        _karakterAnimator.SetBool("Walk", true);
+    }
+
+    private void ArtiBirTextKapat()
+    {
+        _artiBirObje.SetActive(false);
     }
 
 
@@ -190,12 +267,13 @@ public class PlayerController : MonoBehaviour
             _karakterler[3].SetActive(false);
             _karakterler[4].SetActive(false);
             _karakterler[5].SetActive(false);
+            Karakter1Walk();
         }
         else if (_playerScore >= 15 && _playerScore < 30)
         {
             if (_karakterSeviyesi != 2)
             {
-                _karakterPaketiMovement.Bekle();
+                //_karakterPaketiMovement.Bekle();
                 _karakterSeviyesi = 2;
             }
             else
@@ -215,7 +293,7 @@ public class PlayerController : MonoBehaviour
         {
             if (_karakterSeviyesi != 3)
             {
-                _karakterPaketiMovement.Bekle();
+                //_karakterPaketiMovement.Bekle();
                 _karakterSeviyesi = 3;
             }
             else
@@ -235,7 +313,7 @@ public class PlayerController : MonoBehaviour
         {
             if (_karakterSeviyesi != 4)
             {
-                _karakterPaketiMovement.Bekle();
+                //_karakterPaketiMovement.Bekle();
                 _karakterSeviyesi = 4;
             }
             else
@@ -255,7 +333,7 @@ public class PlayerController : MonoBehaviour
         {
             if (_karakterSeviyesi != 5)
             {
-                _karakterPaketiMovement.Bekle();
+                //_karakterPaketiMovement.Bekle();
                 _karakterSeviyesi = 5;
             }
             else
@@ -276,7 +354,7 @@ public class PlayerController : MonoBehaviour
         {
             if (_karakterSeviyesi != 6)
             {
-                _karakterPaketiMovement.Bekle();
+                //_karakterPaketiMovement.Bekle();
                 _karakterSeviyesi = 6;
             }
             else
@@ -310,8 +388,11 @@ public class PlayerController : MonoBehaviour
         _karakterler[5].SetActive(false);
         _karakterAnimator = GameObject.FindWithTag("Karakter").GetComponent<Animator>();
         _karakterAnimator.SetBool("Victory", false);
+        _karakterAnimator.SetBool("Walk", false);
         _karakterAnimator.SetBool("Idle", true);
         _karakterPaketi.transform.position = new Vector3(0, 0, 0);
+        _karakterPaketi.transform.rotation = Quaternion.Euler(0, 0, 0);
+        _karakterPaketi.GetComponent<KarakterPaketiMovement>().AciyiNormaleDondur();
         _player = GameObject.FindWithTag("Player");
         _player.transform.localPosition = new Vector3(0, 1, 0);
     }

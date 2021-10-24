@@ -11,6 +11,14 @@ TagManager:
   - "K\u0131l\u0131b\u0131kDuvar"
   - MafiaDuvar
   - OyunSonuDuvar
+  - SevinmeNoktasi
+  - DuvarPaketi
+  - OyunSonuTopluluk
+  - SagaDonmeSiniri
+  - SolaDonmeSiniri
+  - KarakterPaketi
+  - ReferansObje
+  - DuzGitmeSiniri
   layers:
   - Default
   - TransparentFX

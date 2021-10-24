@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
                 _oyunAktif = true;
                 _uiController.TaptoStartPanelClose();
                 _playerController.Karakter1Walk();
+                KarakterPaketiMovement._karakteriDurdur = false;
             }
             else
             {
