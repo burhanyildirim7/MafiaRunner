@@ -26,7 +26,7 @@ public class UIController : MonoBehaviour
 
     private int _levelSonuElmasSayisi;
 
-
+    private int _oyunBasladi;
 
     void Start()
     {
@@ -34,10 +34,12 @@ public class UIController : MonoBehaviour
 
         _levelNumber = PlayerPrefs.GetInt("LevelNumber");
 
-        if (_levelNumber == 0)
+        _oyunBasladi = PlayerPrefs.GetInt("OyunBasladi");
+        if (_oyunBasladi == 0)
         {
-            _levelNumber = 1;
-            PlayerPrefs.SetInt("LevelNumber", _levelNumber);
+            PlayerPrefs.SetInt("LevelNumber", 1);
+            _oyunBasladi = 1;
+            PlayerPrefs.SetInt("OyunBasladi", _oyunBasladi);
         }
         else
         {
