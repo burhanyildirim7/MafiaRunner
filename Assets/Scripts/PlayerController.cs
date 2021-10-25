@@ -111,11 +111,12 @@ public class PlayerController : MonoBehaviour
                 _playerScore = 1;
                 Destroy(other.gameObject);
 
+                GameController._oyunuBeklet = true;
                 KarakterPaketiMovement._karakteriDurdur = true;
 
                 _karakterAnimator.SetBool("Victory", true);
                 _uiController.LevelSonuElmasSayisi(_toplananElmasSayisi * _playerScore);
-                Invoke("WinScreenAc", 2.5f);
+                Invoke("LoseScreenAc", 2.5f);
 
                 //KarakterAyarlama();
 
@@ -170,7 +171,7 @@ public class PlayerController : MonoBehaviour
 
                 _karakterAnimator.SetBool("Victory", true);
                 _uiController.LevelSonuElmasSayisi(_toplananElmasSayisi * _playerScore);
-                Invoke("WinScreenAc", 2.5f);
+                Invoke("LoseScreenAc", 2.5f);
 
                // KarakterAyarlama();
 
@@ -224,7 +225,7 @@ public class PlayerController : MonoBehaviour
                 _karakterAnimator.SetBool("Walk", false);
                 _karakterAnimator.SetBool("Victory", true);
                 _uiController.LevelSonuElmasSayisi(_toplananElmasSayisi * _playerScore);
-                Invoke("LoseScreenAc", 2.5f);
+                Invoke("WinScreenAc", 2.5f);
             }
             else
             {
