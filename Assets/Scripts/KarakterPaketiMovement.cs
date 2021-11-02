@@ -45,16 +45,49 @@ public class KarakterPaketiMovement : MonoBehaviour
 
     }
 
-    public void Bekle()
+    public void Karakter1Hizi()
     {
-        _speed = 0;
-        GameController._oyunuBeklet = true;
-        Invoke("DevamEt", 1.5f);
+        _speed = 6;
+        _donmeSpeed = 60;
+        // GameController._oyunuBeklet = true;
+        //Invoke("DevamEt", 1.5f);
+    }
+
+    public void Karakter2Hizi()
+    {
+        _speed = 6.5f;
+        _donmeSpeed = 65;
+        // GameController._oyunuBeklet = true;
+        //Invoke("DevamEt", 1.5f);
+    }
+
+    public void Karakter3Hizi()
+    {
+        _speed = 7;
+        _donmeSpeed = 70;
+        // GameController._oyunuBeklet = true;
+        //Invoke("DevamEt", 1.5f);
+    }
+
+    public void Karakter4Hizi()
+    {
+        _speed = 7.5f;
+        _donmeSpeed = 75;
+        // GameController._oyunuBeklet = true;
+        //Invoke("DevamEt", 1.5f);
+    }
+
+    public void Karakter5Hizi()
+    {
+        _speed = 8;
+        _donmeSpeed = 80;
+        // GameController._oyunuBeklet = true;
+        //Invoke("DevamEt", 1.5f);
     }
 
     private void DevamEt()
     {
-        GameController._oyunuBeklet = false;
+       // GameController._oyunuBeklet = false;
         _speed = _firstSpeed;
     }
 

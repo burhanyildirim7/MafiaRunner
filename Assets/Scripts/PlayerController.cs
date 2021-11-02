@@ -289,6 +289,7 @@ public class PlayerController : MonoBehaviour
             _karakterler[3].SetActive(false);
             _karakterler[4].SetActive(false);
             _karakterler[5].SetActive(false);
+            _karakterPaketiMovement.Karakter1Hizi();
             Karakter1Walk();
         }
         else if (_playerScore >= 15 && _playerScore < 30)
@@ -311,6 +312,7 @@ public class PlayerController : MonoBehaviour
             _karakterler[3].SetActive(false);
             _karakterler[4].SetActive(false);
             _karakterler[5].SetActive(false);
+            _karakterPaketiMovement.Karakter2Hizi();
         }
         else if (_playerScore >= 30 && _playerScore < 50)
         {
@@ -332,6 +334,7 @@ public class PlayerController : MonoBehaviour
             _karakterler[3].SetActive(false);
             _karakterler[4].SetActive(false);
             _karakterler[5].SetActive(false);
+            _karakterPaketiMovement.Karakter3Hizi();
         }
         else if (_playerScore >= 50 && _playerScore < 70)
         {
@@ -353,6 +356,7 @@ public class PlayerController : MonoBehaviour
             _karakterler[3].SetActive(true);
             _karakterler[4].SetActive(false);
             _karakterler[5].SetActive(false);
+            _karakterPaketiMovement.Karakter4Hizi();
         }
         else if (_playerScore >= 70 && _playerScore < 85)
         {
@@ -374,6 +378,7 @@ public class PlayerController : MonoBehaviour
             _karakterler[3].SetActive(false);
             _karakterler[4].SetActive(true);
             _karakterler[5].SetActive(false);
+            _karakterPaketiMovement.Karakter5Hizi();
 
         }
         else if (_playerScore >= 85)
@@ -396,6 +401,7 @@ public class PlayerController : MonoBehaviour
             _karakterler[3].SetActive(false);
             _karakterler[4].SetActive(false);
             _karakterler[5].SetActive(true);
+            _karakterPaketiMovement.Karakter2Hizi();
 
         }
     }
@@ -421,6 +427,7 @@ public class PlayerController : MonoBehaviour
         _karakterPaketi.transform.position = new Vector3(0, 0, 0);
         _karakterPaketi.transform.rotation = Quaternion.Euler(0, 0, 0);
         _karakterPaketi.GetComponent<KarakterPaketiMovement>().AciyiNormaleDondur();
+        _karakterPaketi.GetComponent<KarakterPaketiMovement>().Karakter1Hizi();
         _player = GameObject.FindWithTag("Player");
         _player.transform.localPosition = new Vector3(0, 1, 0);
     }
