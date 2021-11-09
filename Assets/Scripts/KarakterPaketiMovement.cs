@@ -41,27 +41,11 @@ public class KarakterPaketiMovement : MonoBehaviour
         {
 
         }
-        
+
 
     }
 
     public void Karakter1Hizi()
-    {
-        _speed = 6;
-        _donmeSpeed = 60;
-        // GameController._oyunuBeklet = true;
-        //Invoke("DevamEt", 1.5f);
-    }
-
-    public void Karakter2Hizi()
-    {
-        _speed = 6.5f;
-        _donmeSpeed = 65;
-        // GameController._oyunuBeklet = true;
-        //Invoke("DevamEt", 1.5f);
-    }
-
-    public void Karakter3Hizi()
     {
         _speed = 7;
         _donmeSpeed = 70;
@@ -69,7 +53,7 @@ public class KarakterPaketiMovement : MonoBehaviour
         //Invoke("DevamEt", 1.5f);
     }
 
-    public void Karakter4Hizi()
+    public void Karakter2Hizi()
     {
         _speed = 7.5f;
         _donmeSpeed = 75;
@@ -77,7 +61,7 @@ public class KarakterPaketiMovement : MonoBehaviour
         //Invoke("DevamEt", 1.5f);
     }
 
-    public void Karakter5Hizi()
+    public void Karakter3Hizi()
     {
         _speed = 8;
         _donmeSpeed = 80;
@@ -85,9 +69,25 @@ public class KarakterPaketiMovement : MonoBehaviour
         //Invoke("DevamEt", 1.5f);
     }
 
+    public void Karakter4Hizi()
+    {
+        _speed = 8.5f;
+        _donmeSpeed = 85;
+        // GameController._oyunuBeklet = true;
+        //Invoke("DevamEt", 1.5f);
+    }
+
+    public void Karakter5Hizi()
+    {
+        _speed = 9;
+        _donmeSpeed = 90;
+        // GameController._oyunuBeklet = true;
+        //Invoke("DevamEt", 1.5f);
+    }
+
     private void DevamEt()
     {
-       // GameController._oyunuBeklet = false;
+        // GameController._oyunuBeklet = false;
         _speed = _firstSpeed;
     }
 
@@ -103,7 +103,7 @@ public class KarakterPaketiMovement : MonoBehaviour
                 _solaDondu = true;
                 _anlikRotation.y = 90;
                 //transform.rotation = Quaternion.Lerp(transform.rotation, _anlikRotation, _donmeSpeed * Time.deltaTime);
-               // transform.rotation = Quaternion.RotateTowards(transform.rotation, _anlikRotation, _donmeSpeed * Time.deltaTime);
+                // transform.rotation = Quaternion.RotateTowards(transform.rotation, _anlikRotation, _donmeSpeed * Time.deltaTime);
                 Debug.Log("Sağa Dön!!!");
             }
             else if (other.gameObject.tag == "SolaDonmeSiniri")
@@ -112,7 +112,7 @@ public class KarakterPaketiMovement : MonoBehaviour
                 _duzGidiyor = false;
                 _solaDondu = true;
                 _anlikRotation.y = -90;
-               // transform.rotation = Quaternion.Slerp(transform.rotation, _anlikRotation, _donmeSpeed * Time.deltaTime);
+                // transform.rotation = Quaternion.Slerp(transform.rotation, _anlikRotation, _donmeSpeed * Time.deltaTime);
             }
             else if (other.gameObject.tag == "DuzGitmeSiniri")
             {
@@ -132,7 +132,7 @@ public class KarakterPaketiMovement : MonoBehaviour
         {
 
         }
-       
+
     }
 
     public void AciyiNormaleDondur()

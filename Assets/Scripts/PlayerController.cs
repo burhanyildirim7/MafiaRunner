@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             int levelsinirsayisi = _playerScore + _iyiToplanabilirDeger;
 
-            _artiBirText.text = "+1";
+            _artiBirText.text = "+2";
             _artiBirText.color = Color.green;
             _artiBirObje.SetActive(true);
             Invoke("ArtiBirTextKapat", 0.5f);
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
             {
                 _playerScore += _iyiToplanabilirDeger;
             }
-            
+
             Destroy(other.gameObject);
 
             KarakterAyarlama();
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.tag == "KötüToplanabilir")
         {
-            _artiBirText.text = "-1";
+            _artiBirText.text = "-2";
             _artiBirText.color = Color.red;
             _artiBirObje.SetActive(true);
             Invoke("ArtiBirTextKapat", 0.5f);
@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
         {
             int levelsinirsayisi = _playerScore + _mafiaDuvarDeger;
 
-            _artiBirText.text = "+10";
+            _artiBirText.text = "+12";
             _artiBirText.color = Color.green;
             _artiBirObje.SetActive(true);
             Invoke("ArtiBirTextKapat", 0.5f);
@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.tag == "KılıbıkDuvar")
         {
-            _artiBirText.text = "-10";
+            _artiBirText.text = "-12";
             _artiBirText.color = Color.red;
             _artiBirObje.SetActive(true);
             Invoke("ArtiBirTextKapat", 0.5f);
@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour
                 _uiController.LevelSonuElmasSayisi(_toplananElmasSayisi * _playerScore);
                 Invoke("LoseScreenAc", 2.5f);
 
-               // KarakterAyarlama();
+                // KarakterAyarlama();
 
                 Debug.Log("Player Score = " + _playerScore);
             }
@@ -209,9 +209,9 @@ public class PlayerController : MonoBehaviour
             {
                 oyunSonuToplulukControl.SevninmeAnimasyonuBaslat();
             }
-            
+
             Debug.Log(_karakterAnimator);
-            
+
 
         }
         else if (other.tag == "SevinmeNoktasi")
@@ -431,7 +431,7 @@ public class PlayerController : MonoBehaviour
         _player = GameObject.FindWithTag("Player");
         _player.transform.localPosition = new Vector3(0, 1, 0);
     }
-    
+
 
 
 }
